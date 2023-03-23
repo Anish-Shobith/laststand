@@ -1,0 +1,161 @@
+---
+import Splash from "~/components/Splash.astro";
+import Content from "~/components/Content.astro";
+import Features2 from "~/components/Features.astro";
+import Footer from "~/components/Footer.astro";
+import "~/styles/index.css";
+const { generator, site } = Astro;
+const description =
+  "Build fast websites, faster. Astro is a new kind of site builder for the modern web. Lightning-fast performance meets powerful developer experience.";
+---
+
+<!DOCTYPE html>
+<html lang="en" class="h-full motion-safe:scroll-smooth" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="generator" content={generator} />
+
+    <title>The Last Stand</title>
+    <meta name="description" content={description} />
+
+    <!-- https://uxmovement.com/navigation/why-scrolling-is-the-new-click/98 -->
+    <meta property="og:title" content="Astro" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={site} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body
+    class="h-full overflow-x-hidden bg-default text-default text-base selection:bg-secondary selection:text-white font-stranger"
+  >
+    <Splash />
+    <Content
+      highlight="Inside the room"
+      title="And what's inside? ..."
+      items={[
+        {
+          title: "Introduction",
+          description:
+            "The Last Stand is an escape room experience that plunges players into a world on the brink of destruction. Players have only one hour to escape before the final cataclysmic event. Set in a post-apocalyptic bunker, players must solve puzzles to unlock the doors and escape the room before time runs out.",
+        },
+        {
+          title: "Challenging Gameplay",
+          description:
+            "The escape room is designed to be challenging and thought-provoking, with a range of clues, riddles, and puzzles that players must solve to progress. The game is filled with interactive props and special effects that add to the overall immersive experience, such as flickering lights, simulated earthquakes, and sound effects that create a sense of urgency and tension.",
+        },
+      ]}
+      image={{
+        src: import("~/assets/content1.png"),
+        alt: "Colorful Image",
+      }}
+    />
+    <Content
+      isReversed
+      isAfterContent
+      items={[
+        {
+          title: "Engaging Storyline",
+          description:
+            "The storyline of The Last Stand is well-crafted and engaging, with a focus on survival and resourcefulness. Players must use their critical thinking skills to gather clues, decipher codes, and unlock hidden doors. Along the way, they will encounter a range of obstacles that require creative problem-solving to overcome.",
+        },
+        {
+          title: "Time Pressure",
+          description:
+            "With the clock ticking, players must act quickly if they hope to escape before disaster strikes. The tension mounts with every passing moment as players work feverishly to unravel the clues and crack the codes that will lead them to freedom.",
+        },
+      ]}
+      image={{
+        src: import("~/assets/content2.png"),
+        alt: "Colorful Image",
+      }}
+    />
+
+    <Content
+      isAfterContent
+      items={[
+        {
+          title: "Immersive Experience",
+          description:
+            "Featuring stunning visual and audio effects, The Last Stand is a fully immersive escape room experience that transports players to a world unlike any other. Whether you're a seasoned escape room veteran or a first-time player, The Last Stand is a must-try adventure that is sure to leave you on the edge of your seat from start to finish.",
+        },
+        {
+          title: "Conclusion",
+          description:
+            "In conclusion, The Last Stand is an exciting and intense escape room experience that challenges players to think critically and work together to escape before time runs out. With a well-crafted storyline and immersive special effects, The Last Stand is sure to provide an unforgettable adventure for players of all levels. So gather",
+        },
+      ]}
+      image={{
+        src: import("~/assets/content3.png"),
+        alt: "Colorful Image",
+      }}
+    />
+
+    <Features2
+      title="Rules"
+      subtitle="Rules of the game"
+      items={[
+        {
+          title: "Group Size",
+          description:
+            "Minimum of 2 and maximum of 6 players, must be 16 years or older.",
+          icon: "rules/groups",
+        },
+        {
+          title: "Time Limit",
+          description: "Game time limit of 60 minutes.",
+          icon: "rules/alarm",
+        },
+        {
+          title: "Safety Rules",
+          description:
+            "Follow safety rules provided, no damage to property or use of external tools.",
+          icon: "rules/certificate",
+        },
+        {
+          title: "Clue System",
+          description: "Clue system available through walkie-talkie.",
+          icon: "rules/bulb",
+        },
+        {
+          title: "Game Master",
+          description: "Game master monitors and provides hints if needed.",
+          icon: "rules/Videogame",
+        },
+        {
+          title: "Cell Phone Policy",
+          description:
+            "No cell phones or electronic devices allowed in the game room.",
+          icon: "ic:outline-mobile-off",
+        },
+        {
+          title: "Food and Drinks",
+          description: "No food or drinks allowed inside the game room.",
+          icon: "fluent:food-16-filled",
+        },
+        {
+          title: "Late Arrival Policy",
+          description:
+            "Late arrivals will have reduced game time and may have to wait for the next available slot.",
+          icon: "rules/running",
+        },
+      ]}
+    />
+    <script>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          } else {
+            entry.target.classList.remove("active");
+          }
+        });
+      });
+
+      const hiddenElements = document.querySelectorAll(".inactive");
+      hiddenElements.forEach((el) => observer.observe(el));
+    </script>
+    <Footer />
+  </body>
+</html>
